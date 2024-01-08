@@ -58,14 +58,15 @@ public class Block // Eden structure block
 
     public bool IsLiquid()
     {
-        if (this.BlockType == BlockType.Water || this.BlockType == BlockType.Water1_4 || this.BlockType == BlockType.Water2_4 || this.BlockType == BlockType.Water3_4)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return this.BlockType == BlockType.Water || this.BlockType == BlockType.Water1_4 || this.BlockType == BlockType.Water2_4 || this.BlockType == BlockType.Water3_4;
+    }
+
+    public bool IsRamp()
+    {
+        BlockSet.BlockSettings blocksettings;
+
+        BlockSet.Blocks.TryGetValue(this.BlockType, out blocksettings);
+        return blocksettings != null && blocksettings.CustomBlock == 2;
     }
 
     public Color32 GetColor()

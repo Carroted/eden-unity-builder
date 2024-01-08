@@ -7,6 +7,7 @@ public class GameUIPC : MonoBehaviour
 
     public GameObject[] AndroidUI;
     public GameObject[] WindowsUI;
+    public GameObject SettingsPanel;
 
     public CameraMovement CamMove;
 
@@ -40,7 +41,13 @@ public class GameUIPC : MonoBehaviour
     {
         if (!IsPC) return;
 
-        if (BuildController.Instance.InventoryBlocks.activeInHierarchy || BuildController.Instance.InventoryColors.activeInHierarchy)
+        // escape or p to toggle settingspanel
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            SettingsPanel.SetActive(!SettingsPanel.activeInHierarchy);
+        }
+
+        if (BuildController.Instance.InventoryBlocks.activeInHierarchy || BuildController.Instance.InventoryColors.activeInHierarchy || SettingsPanel.activeInHierarchy)
         {
             Cursor.lockState = CursorLockMode.None;
             CamMove.enabled = false;

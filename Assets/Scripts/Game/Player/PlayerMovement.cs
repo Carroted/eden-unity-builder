@@ -166,7 +166,7 @@ public class PlayerMovement : MonoBehaviour // old code
             // _player.isWaitToBuild = false;
         }
 
-        if (_isReadyAutoJump && Controller.isGrounded && InputVert > 0.5f)
+        if (_isReadyAutoJump && Controller.isGrounded && InputVert > 0.5f && GameSettings.Autojump)
         {
             JumpBlock = true;
             tempJumpSpeed = JumpSpeed;
